@@ -27,7 +27,13 @@
         End Select
 
         Dim userCutAmount As Decimal = salary * userCutPercentage
-        Dim rseCutAmount As Decimal = salary * 0.4 ' 40% for RSE
+        Dim rseCutAmount As Decimal
+        Select Case ComboBox1.SelectedItem.ToString().ToLower()
+            Case "rence", "joshua", "vence"
+                rseCutAmount = salary * 0.4 ' 40% for RSE
+            Case "hans", "neo"
+                rseCutAmount = salary * 0.15 ' 15% for RSE
+        End Select
 
         UserCut.Text = "₱" & userCutAmount.ToString("N2") ' Display in ₱ with two decimal places
         RSECut.Text = "₱" & rseCutAmount.ToString("N2")
